@@ -1,10 +1,24 @@
-name: Deploy to Render
+name: Register Deployment on GitHub
+
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  deployments: write
+
 jobs:
-  deploy:
+  deployment:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Trigger Render deploy hook
-        run: curl <https://api.render.com/deploy/srv-d49amt3e5dus73ckomk0?key=ySSlCcNCS8c>
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: production
