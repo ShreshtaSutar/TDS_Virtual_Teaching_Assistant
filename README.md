@@ -3,8 +3,7 @@
 An intelligent **Retrieval-Augmented Generation (RAG)**-based **Virtual Teaching Assistant** built to automatically respond to student queries for the **Tools in Data Science (TDS)** course under the **IIT Madras Online B.Sc. Degree in Data Science** program.
 
 [![Live Deployment](https://img.shields.io/badge/Live%20on-Render-blue)](https://tds-project-1-qt1e.onrender.com/docs#/)
-[![Deployment Status](https://github.com/ShreshtaSutar/TDS_Virtual_Teaching_Assistant/actions/workflows/deployment.yml/badge.svg)](https://github.com/ShreshtaSutar/TDS_Virtual_Teaching_Assistant/actions)
-
+[![Deployment Status](https://github.com/ShreshtaSutar/TDS_Virtual_Teaching_Assistant/actions/workflows/main.yml/badge.svg)](https://github.com/ShreshtaSutar/TDS_Virtual_Teaching_Assistant/actions)
 ---
 
 ## 📘 Overview
