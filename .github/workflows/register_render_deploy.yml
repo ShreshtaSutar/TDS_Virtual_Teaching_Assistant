@@ -1,0 +1,30 @@
+name: Register Render Deployment (no-approval)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  create-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create GitHub deployment via REST API
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          REF: ${{ github.ref_name }}
+        run: |
+          echo "Creating deployment to environment: render-deploy"
+          curl -s -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${GITHUB_REPOSITORY}/deployments \
+            -d "{\"ref\":\"${REF}\",\"environment\":\"render-deploy\",\"required_contexts\":[],\"auto_merge\":false}" \
+            | sed -n '1,200p'
